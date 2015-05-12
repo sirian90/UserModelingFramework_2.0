@@ -1,0 +1,406 @@
+#
+# A fatal error has been detected by the Java Runtime Environment:
+#
+#  SIGSEGV (0xb) at pc=0x00d930b6, pid=20651, tid=2704464752
+#
+# JRE version: 7.0_03-b04
+# Java VM: Java HotSpot(TM) Client VM (22.1-b02 mixed mode linux-x86 )
+# Problematic frame:
+# V  [libjvm.so+0x1bc0b6]  FastScanClosure::do_oop(oopDesc**)+0x16
+#
+# Failed to write core dump. Core dumps have been disabled. To enable core dumping, try "ulimit -c unlimited" before starting Java again
+#
+# If you would like to submit a bug report, please visit:
+#   http://bugreport.sun.com/bugreport/crash.jsp
+#
+
+---------------  T H R E A D  ---------------
+
+Current thread (0x08c1c400):  VMThread [stack: 0xa12ad000,0xa132e000] [id=20657]
+
+siginfo:si_signo=SIGSEGV: si_errno=0, si_code=1 (SEGV_MAPERR), si_addr=0x0c838dac
+
+Registers:
+EAX=0xa132ce3c, EBX=0xa7117674, ECX=0x0000000c, EDX=0x0c838dac
+ESP=0xa132cbc0, EBP=0xa132cbc8, ESI=0xa132ce3c, EDI=0xb16d7c68
+EIP=0x00d930b6, EFLAGS=0x00010292, CR2=0x0c838dac
+
+Top of Stack: (sp=0xa132cbc0)
+0xa132cbc0:   a7117678 a7117678 a132cbf8 00e06bf3
+0xa132cbd0:   a132ce3c a7117674 a132cc6c a132cc6c
+0xa132cbe0:   a132cc4c 00000001 b16d7c70 a7117678
+0xa132cbf0:   a7117660 a7117678 a132cc38 00fbaece
+0xa132cc00:   b16d7af8 a7117660 a132cc6c a7117660
+0xa132cc10:   08bae920 fffffff8 a132cc4c a7137600
+0xa132cc20:   00000086 a7117600 00000084 08bc5be0
+0xa132cc30:   a132ccbc a7117600 a132cc98 00fb8875 
+
+Instructions: (pc=0x00d930b6)
+0x00d93096:   5d c3 90 8d b4 26 00 00 00 00 55 89 e5 56 53 8b
+0x00d930a6:   5d 0c 8b 75 08 8b 13 85 d2 74 27 39 56 20 76 22
+0x00d930b6:   8b 02 83 e0 03 83 f8 03 75 20 8b 0a 80 3d ed c0
+0x00d930c6:   0b 01 00 75 4d 89 ca 83 e2 fc 89 13 80 7e 24 00 
+
+Register to memory mapping:
+
+EAX=0xa132ce3c is an unknown value
+EBX=0xa7117674 is an oop
+java.util.Hashtable$Entry 
+ - klass: 'java/util/Hashtable$Entry'
+ECX=0x0000000c is an unknown value
+EDX=0x0c838dac is an unknown value
+ESP=0xa132cbc0 is an unknown value
+EBP=0xa132cbc8 is an unknown value
+ESI=0xa132ce3c is an unknown value
+EDI=0xb16d7c68 is an oop
+{instance class} 
+ - klass: {other class}
+
+
+Stack: [0xa12ad000,0xa132e000],  sp=0xa132cbc0,  free space=510k
+Native frames: (J=compiled Java code, j=interpreted, Vv=VM code, C=native code)
+V  [libjvm.so+0x1bc0b6]  FastScanClosure::do_oop(oopDesc**)+0x16
+V  [libjvm.so+0x22fbf3]  instanceKlass::oop_oop_iterate_nv(oopDesc*, FilteringClosure*)+0x83
+V  [libjvm.so+0x3e3ece]  ContiguousSpaceDCTOC::walk_mem_region_with_cl(MemRegion, HeapWord*, HeapWord*, FilteringClosure*)+0xae
+V  [libjvm.so+0x3e1875]  Filtering_DCTOC::walk_mem_region(MemRegion, HeapWord*, HeapWord*)+0x55
+V  [libjvm.so+0x3e1795]  DirtyCardToOopClosure::do_MemRegion(MemRegion)+0xe5
+V  [libjvm.so+0x1295c8]  ClearNoncleanCardWrapper::do_MemRegion(MemRegion)+0x108
+V  [libjvm.so+0x127e5e]  CardTableModRefBS::non_clean_card_iterate_possibly_parallel(Space*, MemRegion, OopsInGenClosure*, CardTableRS*)+0x8e
+V  [libjvm.so+0x129437]  CardTableRS::younger_refs_in_space_iterate(Space*, OopsInGenClosure*)+0x37
+V  [libjvm.so+0x218e94]  OneContigSpaceCardGeneration::younger_refs_iterate(OopsInGenClosure*)+0x34
+V  [libjvm.so+0x20c7a5]  GenCollectedHeap::gen_process_strong_roots(int, bool, bool, bool, SharedHeap::ScanningOption, OopsInGenClosure*, bool, OopsInGenClosure*)+0x95
+V  [libjvm.so+0x1bd218]  DefNewGeneration::collect(bool, bool, unsigned int, bool)+0x228
+V  [libjvm.so+0x20e5a7]  GenCollectedHeap::do_collection(bool, bool, unsigned int, bool, int)+0x567
+V  [libjvm.so+0x16f430]  GenCollectorPolicy::satisfy_failed_allocation(unsigned int, bool)+0xb0
+V  [libjvm.so+0x462624]  VM_GenCollectForAllocation::doit()+0x74
+V  [libjvm.so+0x46a1b1]  VM_Operation::evaluate()+0x41
+V  [libjvm.so+0x468b58]  VMThread::evaluate_operation(VM_Operation*)+0x78
+V  [libjvm.so+0x469097]  VMThread::loop()+0x1a7
+V  [libjvm.so+0x469725]  VMThread::run()+0x85
+V  [libjvm.so+0x382351]  java_start(Thread*)+0x111
+C  [libpthread.so.0+0x596e]  start_thread+0xbe
+
+VM_Operation (0xb772c5a8): GenCollectForAllocation, mode: safepoint, requested by thread 0x08baa400
+
+
+---------------  P R O C E S S  ---------------
+
+Java Threads: ( => current thread )
+  0x08c67400 JavaThread "Service Thread" daemon [_thread_blocked, id=20662, stack(0xa0f89000,0xa0fda000)]
+  0x08c65400 JavaThread "C1 CompilerThread0" daemon [_thread_blocked, id=20661, stack(0xa0fda000,0xa105b000)]
+  0x08c63800 JavaThread "Signal Dispatcher" daemon [_thread_blocked, id=20660, stack(0xa105b000,0xa10ac000)]
+  0x08c23800 JavaThread "Finalizer" daemon [_thread_blocked, id=20659, stack(0xa120b000,0xa125c000)]
+  0x08c21c00 JavaThread "Reference Handler" daemon [_thread_blocked, id=20658, stack(0xa125c000,0xa12ad000)]
+  0x08baa400 JavaThread "main" [_thread_blocked, id=20656, stack(0xb76dd000,0xb772e000)]
+
+Other Threads:
+=>0x08c1c400 VMThread [stack: 0xa12ad000,0xa132e000] [id=20657]
+  0x08c72400 WatcherThread [stack: 0xa0f08000,0xa0f89000] [id=20663]
+
+VM state:at safepoint (normal execution)
+
+VM Mutex/Monitor currently owned by a thread:  ([mutex/lock_event])
+[0x08ba7c90] Threads_lock - owner thread: 0x08c1c400
+[0x08ba80a0] Heap_lock - owner thread: 0x08baa400
+
+Heap
+ def new generation   total 5440K, used 5440K [0xa1650000, 0xa1c30000, 0xa6ba0000)
+  eden space 4864K, 100% used [0xa1650000, 0xa1b10000, 0xa1b10000)
+  from space 576K, 100% used [0xa1b10000, 0xa1ba0000, 0xa1ba0000)
+  to   space 576K,   0% used [0xa1ba0000, 0xa1ba06e8, 0xa1c30000)
+ tenured generation   total 11916K, used 5939K [0xa6ba0000, 0xa7743000, 0xb1650000)
+   the space 11916K,  49% used [0xa6ba0000, 0xa716cf10, 0xa716d000, 0xa7743000)
+ compacting perm gen  total 12288K, used 6178K [0xb1650000, 0xb2250000, 0xb5650000)
+   the space 12288K,  50% used [0xb1650000, 0xb1c58b00, 0xb1c58c00, 0xb2250000)
+No shared spaces configured.
+
+Code Cache  [0xb56dd000, 0xb5a95000, 0xb76dd000)
+ total_blobs=1597 nmethods=1442 adapters=91 free_code_cache=28979Kb largest_free_block=29672192
+
+Dynamic libraries:
+00110000-00263000 r-xp 00000000 08:01 1445541    /lib/tls/i686/cmov/libc-2.11.1.so
+00263000-00265000 r--p 00153000 08:01 1445541    /lib/tls/i686/cmov/libc-2.11.1.so
+00265000-00266000 rw-p 00155000 08:01 1445541    /lib/tls/i686/cmov/libc-2.11.1.so
+00266000-00269000 rw-p 00000000 00:00 0 
+00269000-0028d000 r-xp 00000000 08:01 1445543    /lib/tls/i686/cmov/libm-2.11.1.so
+0028d000-0028e000 r--p 00023000 08:01 1445543    /lib/tls/i686/cmov/libm-2.11.1.so
+0028e000-0028f000 rw-p 00024000 08:01 1445543    /lib/tls/i686/cmov/libm-2.11.1.so
+0028f000-00296000 r-xp 00000000 08:01 1445546    /lib/tls/i686/cmov/librt-2.11.1.so
+00296000-00297000 r--p 00006000 08:01 1445546    /lib/tls/i686/cmov/librt-2.11.1.so
+00297000-00298000 rw-p 00007000 08:01 1445546    /lib/tls/i686/cmov/librt-2.11.1.so
+00298000-002bb000 r-xp 00000000 08:01 3807785    /usr/lib/jvm/jdk1.7.0_03/jre/lib/i386/libjava.so
+002bb000-002bc000 rw-p 00023000 08:01 3807785    /usr/lib/jvm/jdk1.7.0_03/jre/lib/i386/libjava.so
+002bc000-002c4000 r-xp 00000000 08:01 1445554    /lib/tls/i686/cmov/libnss_nis-2.11.1.so
+002c4000-002c5000 r--p 00007000 08:01 1445554    /lib/tls/i686/cmov/libnss_nis-2.11.1.so
+002c5000-002c6000 rw-p 00008000 08:01 1445554    /lib/tls/i686/cmov/libnss_nis-2.11.1.so
+002c6000-002d4000 r-xp 00000000 08:01 3807804    /usr/lib/jvm/jdk1.7.0_03/jre/lib/i386/libnio.so
+002d4000-002d5000 rw-p 0000e000 08:01 3807804    /usr/lib/jvm/jdk1.7.0_03/jre/lib/i386/libnio.so
+002d5000-002e9000 r-xp 00000000 08:01 3807798    /usr/lib/jvm/jdk1.7.0_03/jre/lib/i386/libnet.so
+002e9000-002ea000 rw-p 00014000 08:01 3807798    /usr/lib/jvm/jdk1.7.0_03/jre/lib/i386/libnet.so
+002ea000-0031d000 r-xp 00000000 08:01 3807792    /usr/lib/jvm/jdk1.7.0_03/jre/lib/i386/libsunec.so
+0031d000-00321000 rw-p 00032000 08:01 3807792    /usr/lib/jvm/jdk1.7.0_03/jre/lib/i386/libsunec.so
+00321000-00325000 rw-p 00000000 00:00 0 
+00325000-00327000 r-xp 00000000 08:01 1310841    /lib/libnss_mdns4_minimal.so.2
+00327000-00328000 r--p 00001000 08:01 1310841    /lib/libnss_mdns4_minimal.so.2
+00328000-00329000 rw-p 00002000 08:01 1310841    /lib/libnss_mdns4_minimal.so.2
+00329000-0032d000 r-xp 00000000 08:01 1445556    /lib/tls/i686/cmov/libnss_dns-2.11.1.so
+0032d000-0032e000 r--p 00004000 08:01 1445556    /lib/tls/i686/cmov/libnss_dns-2.11.1.so
+0032e000-0032f000 rw-p 00005000 08:01 1445556    /lib/tls/i686/cmov/libnss_dns-2.11.1.so
+0033e000-00344000 r-xp 00000000 08:01 1445553    /lib/tls/i686/cmov/libnss_compat-2.11.1.so
+00344000-00345000 r--p 00006000 08:01 1445553    /lib/tls/i686/cmov/libnss_compat-2.11.1.so
+00345000-00346000 rw-p 00007000 08:01 1445553    /lib/tls/i686/cmov/libnss_compat-2.11.1.so
+00346000-00356000 r-xp 00000000 08:01 1445539    /lib/tls/i686/cmov/libresolv-2.11.1.so
+00356000-00357000 r--p 00010000 08:01 1445539    /lib/tls/i686/cmov/libresolv-2.11.1.so
+00357000-00358000 rw-p 00011000 08:01 1445539    /lib/tls/i686/cmov/libresolv-2.11.1.so
+00358000-0035a000 rw-p 00000000 00:00 0 
+0051d000-00527000 r-xp 00000000 08:01 1445538    /lib/tls/i686/cmov/libnss_files-2.11.1.so
+00527000-00528000 r--p 00009000 08:01 1445538    /lib/tls/i686/cmov/libnss_files-2.11.1.so
+00528000-00529000 rw-p 0000a000 08:01 1445538    /lib/tls/i686/cmov/libnss_files-2.11.1.so
+005f2000-0060d000 r-xp 00000000 08:01 1318604    /lib/ld-2.11.1.so
+0060d000-0060e000 r--p 0001a000 08:01 1318604    /lib/ld-2.11.1.so
+0060e000-0060f000 rw-p 0001b000 08:01 1318604    /lib/ld-2.11.1.so
+00656000-00657000 r-xp 00000000 00:00 0          [vdso]
+006e1000-006f4000 r-xp 00000000 08:01 3807775    /usr/lib/jvm/jdk1.7.0_03/jre/lib/i386/jli/libjli.so
+006f4000-006f5000 rw-p 00012000 08:01 3807775    /usr/lib/jvm/jdk1.7.0_03/jre/lib/i386/jli/libjli.so
+00720000-0072c000 r-xp 00000000 08:01 3807776    /usr/lib/jvm/jdk1.7.0_03/jre/lib/i386/libverify.so
+0072c000-0072d000 rw-p 0000c000 08:01 3807776    /usr/lib/jvm/jdk1.7.0_03/jre/lib/i386/libverify.so
+007fd000-0081a000 r-xp 00000000 08:01 1310747    /lib/libgcc_s.so.1
+0081a000-0081b000 r--p 0001c000 08:01 1310747    /lib/libgcc_s.so.1
+0081b000-0081c000 rw-p 0001d000 08:01 1310747    /lib/libgcc_s.so.1
+00921000-00938000 r-xp 00000000 08:01 3807794    /usr/lib/jvm/jdk1.7.0_03/jre/lib/i386/libzip.so
+00938000-00939000 rw-p 00017000 08:01 3807794    /usr/lib/jvm/jdk1.7.0_03/jre/lib/i386/libzip.so
+00a7e000-00a80000 r-xp 00000000 08:01 1445536    /lib/tls/i686/cmov/libdl-2.11.1.so
+00a80000-00a81000 r--p 00001000 08:01 1445536    /lib/tls/i686/cmov/libdl-2.11.1.so
+00a81000-00a82000 rw-p 00002000 08:01 1445536    /lib/tls/i686/cmov/libdl-2.11.1.so
+00aa1000-00ab4000 r-xp 00000000 08:01 1445534    /lib/tls/i686/cmov/libnsl-2.11.1.so
+00ab4000-00ab5000 r--p 00012000 08:01 1445534    /lib/tls/i686/cmov/libnsl-2.11.1.so
+00ab5000-00ab6000 rw-p 00013000 08:01 1445534    /lib/tls/i686/cmov/libnsl-2.11.1.so
+00ab6000-00ab8000 rw-p 00000000 00:00 0 
+00bbe000-00bd3000 r-xp 00000000 08:01 1445537    /lib/tls/i686/cmov/libpthread-2.11.1.so
+00bd3000-00bd4000 r--p 00014000 08:01 1445537    /lib/tls/i686/cmov/libpthread-2.11.1.so
+00bd4000-00bd5000 rw-p 00015000 08:01 1445537    /lib/tls/i686/cmov/libpthread-2.11.1.so
+00bd5000-00bd7000 rw-p 00000000 00:00 0 
+00bd7000-010af000 r-xp 00000000 08:01 3807791    /usr/lib/jvm/jdk1.7.0_03/jre/lib/i386/client/libjvm.so
+010af000-010ca000 rw-p 004d8000 08:01 3807791    /usr/lib/jvm/jdk1.7.0_03/jre/lib/i386/client/libjvm.so
+010ca000-014e7000 rw-p 00000000 00:00 0 
+08048000-08049000 r-xp 00000000 08:01 3415321    /usr/lib/jvm/jdk1.7.0_03/bin/java
+08049000-0804a000 rw-p 00000000 08:01 3415321    /usr/lib/jvm/jdk1.7.0_03/bin/java
+08ba3000-0926e000 rw-p 00000000 00:00 0          [heap]
+a0def000-a0df2000 ---p 00000000 00:00 0 
+a0df2000-a0e40000 rw-p 00000000 00:00 0 
+a0e40000-a0e44000 r--s 0002d000 08:01 3680727    /usr/lib/jvm/jdk1.7.0_03/jre/lib/ext/sunjce_provider.jar
+a0e44000-a0e45000 r--s 00003000 08:01 3680731    /usr/lib/jvm/jdk1.7.0_03/jre/lib/ext/sunec.jar
+a0e45000-a0e49000 r--s 00088000 08:01 3415409    /usr/lib/jvm/jdk1.7.0_03/jre/lib/jsse.jar
+a0e49000-a0e4c000 r--s 00018000 08:01 3415413    /usr/lib/jvm/jdk1.7.0_03/jre/lib/jce.jar
+a0e4c000-a0e55000 r--s 00254000 08:01 3415401    /usr/lib/jvm/jdk1.7.0_03/jre/lib/resources.jar
+a0e55000-a0e6d000 r--s 00115000 08:01 4073806    /home/davidefeltoni/workspaceSRS/UserModelingFramework_2.0/lib/xerces-2.9.1.jar
+a0e6d000-a0e6f000 r--s 00009000 08:01 4073816    /home/davidefeltoni/workspaceSRS/UserModelingFramework_2.0/lib/twitter4j-stream-2.2.5.jar
+a0e6f000-a0e71000 r--s 00006000 08:01 4073812    /home/davidefeltoni/workspaceSRS/UserModelingFramework_2.0/lib/twitter4j-media-support-2.2.5.jar
+a0e71000-a0e75000 r--s 00021000 08:01 4073815    /home/davidefeltoni/workspaceSRS/UserModelingFramework_2.0/lib/twitter4j-examples-2.2.5.jar
+a0e75000-a0e7b000 r--s 00047000 08:01 4073813    /home/davidefeltoni/workspaceSRS/UserModelingFramework_2.0/lib/twitter4j-core-2.2.5.jar
+a0e7b000-a0e80000 r--s 0002c000 08:01 4073809    /home/davidefeltoni/workspaceSRS/UserModelingFramework_2.0/lib/twitter4j-async-2.2.5.jar
+a0e80000-a0e83000 r--s 0001e000 08:01 4073795    /home/davidefeltoni/workspaceSRS/UserModelingFramework_2.0/lib/textcat-1.0.1.jar
+a0e83000-a0e94000 r--s 000e9000 08:01 4073803    /home/davidefeltoni/workspaceSRS/UserModelingFramework_2.0/lib/sspace-lib-1.7.1.jar
+a0e94000-a0e9a000 r--s 00087000 08:01 4073817    /home/davidefeltoni/workspaceSRS/UserModelingFramework_2.0/lib/postgresql.jar
+a0e9a000-a0e9d000 r--s 00022000 08:01 4073811    /home/davidefeltoni/workspaceSRS/UserModelingFramework_2.0/lib/nekohtml.jar
+a0e9d000-a0ea4000 r--s 000ba000 08:01 4073800    /home/davidefeltoni/workspaceSRS/UserModelingFramework_2.0/lib/mysql-connector-java-5.1.18-bin.jar
+a0ea4000-a0eb8000 r--s 000fe000 08:01 4073794    /home/davidefeltoni/workspaceSRS/UserModelingFramework_2.0/lib/lucene-core-2.9.4-dev.jar
+a0eb8000-a0eb9000 r--s 00004000 08:01 4073799    /home/davidefeltoni/workspaceSRS/UserModelingFramework_2.0/lib/lucene-ant-2.9.4-dev.jar
+a0eb9000-a0ec2000 r--s 0006d000 08:01 4073797    /home/davidefeltoni/workspaceSRS/UserModelingFramework_2.0/lib/log4j-1.2.16.jar
+a0ec2000-a0ec3000 r--s 00009000 08:01 4073802    /home/davidefeltoni/workspaceSRS/UserModelingFramework_2.0/lib/jvave.jar
+a0ec3000-a0ed6000 r--s 000fe000 08:01 4073796    /home/davidefeltoni/workspaceSRS/UserModelingFramework_2.0/lib/jackson-all-1.9.3.jar
+a0ed6000-a0ed7000 r--s 00003000 08:01 4073807    /home/davidefeltoni/workspaceSRS/UserModelingFramework_2.0/lib/j-calais-0.3.jar
+a0ed7000-a0ef7000 r--s 00173000 08:01 4073801    /home/davidefeltoni/workspaceSRS/UserModelingFramework_2.0/lib/guava-11.0.jar
+a0ef7000-a0efc000 r--s 00048000 08:01 4073818    /home/davidefeltoni/workspaceSRS/UserModelingFramework_2.0/lib/dom4j-1.6.1.jar
+a0efc000-a0efd000 r--s 00006000 08:01 4073808    /home/davidefeltoni/workspaceSRS/UserModelingFramework_2.0/lib/commons-logging.jar
+a0efd000-a0f03000 r--s 00048000 08:01 4073805    /home/davidefeltoni/workspaceSRS/UserModelingFramework_2.0/lib/commons-lang3-3.1.jar
+a0f03000-a0f08000 r--s 00040000 08:01 4073814    /home/davidefeltoni/workspaceSRS/UserModelingFramework_2.0/lib/commons-httpclient-3.0.1.jar
+a0f08000-a0f09000 ---p 00000000 00:00 0 
+a0f09000-a0f89000 rw-p 00000000 00:00 0 
+a0f89000-a0f8c000 ---p 00000000 00:00 0 
+a0f8c000-a0fda000 rw-p 00000000 00:00 0 
+a0fda000-a0fdd000 ---p 00000000 00:00 0 
+a0fdd000-a105b000 rw-p 00000000 00:00 0 
+a105b000-a105e000 ---p 00000000 00:00 0 
+a105e000-a10ac000 rw-p 00000000 00:00 0 
+a10ac000-a10eb000 r--p 00000000 08:01 2498245    /usr/lib/locale/en_US.utf8/LC_CTYPE
+a10eb000-a10ec000 r--p 00000000 08:01 2498250    /usr/lib/locale/en_US.utf8/LC_NUMERIC
+a10ec000-a10ed000 r--p 00000000 08:01 2502453    /usr/lib/locale/en_US.utf8/LC_TIME
+a10ed000-a120b000 r--p 00000000 08:01 2498033    /usr/lib/locale/en_US.utf8/LC_COLLATE
+a120b000-a120e000 ---p 00000000 00:00 0 
+a120e000-a125c000 rw-p 00000000 00:00 0 
+a125c000-a125f000 ---p 00000000 00:00 0 
+a125f000-a12ad000 rw-p 00000000 00:00 0 
+a12ad000-a12ae000 ---p 00000000 00:00 0 
+a12ae000-a1379000 rw-p 00000000 00:00 0 
+a1379000-a1538000 r--s 03a09000 08:01 3415400    /usr/lib/jvm/jdk1.7.0_03/jre/lib/rt.jar
+a1538000-a153f000 rw-p 00000000 00:00 0 
+a153f000-a1559000 rw-p 00000000 00:00 0 
+a1559000-a155f000 rw-p 00000000 00:00 0 
+a155f000-a156a000 ---p 00000000 00:00 0 
+a156a000-a15af000 rw-p 00000000 00:00 0 
+a15af000-a15b2000 rw-p 00000000 00:00 0 
+a15b2000-a15b8000 ---p 00000000 00:00 0 
+a15b8000-a15d9000 rw-p 00000000 00:00 0 
+a15d9000-a15e0000 rw-p 00000000 00:00 0 
+a15e0000-a15eb000 ---p 00000000 00:00 0 
+a15eb000-a162f000 rw-p 00000000 00:00 0 
+a162f000-a1635000 rw-p 00000000 00:00 0 
+a1635000-a164f000 rw-p 00000000 00:00 0 
+a164f000-a1c30000 rw-p 00000000 00:00 0 
+a1c30000-a2700000 ---p 00000000 00:00 0 
+a2700000-a6ba0000 rw-p 00000000 00:00 0 
+a6ba0000-a7743000 rw-p 00000000 00:00 0 
+a7743000-a8d7e000 ---p 00000000 00:00 0 
+a8d7e000-b1650000 rw-p 00000000 00:00 0 
+b1650000-b2250000 rw-p 00000000 00:00 0 
+b2250000-b5650000 rw-p 00000000 00:00 0 
+b5650000-b5653000 r--s 00024000 08:01 4073798    /home/davidefeltoni/workspaceSRS/UserModelingFramework_2.0/lib/commons-io-2.0.1.jar
+b5653000-b5655000 r--s 0000a000 08:01 4073810    /home/davidefeltoni/workspaceSRS/UserModelingFramework_2.0/lib/commons-codec-1.3.jar
+b5655000-b5658000 r--s 00014000 08:01 4073804    /home/davidefeltoni/workspaceSRS/UserModelingFramework_2.0/lib/boilerpipe-1.1.0.jar
+b5658000-b5659000 r--p 00000000 08:01 2502454    /usr/lib/locale/en_US.utf8/LC_MONETARY
+b5659000-b565a000 r--p 00000000 08:01 2626660    /usr/lib/locale/en_US.utf8/LC_MESSAGES/SYS_LC_MESSAGES
+b565a000-b565b000 r--p 00000000 08:01 2498383    /usr/lib/locale/en_US.utf8/LC_PAPER
+b565b000-b565c000 r--p 00000000 08:01 2498148    /usr/lib/locale/en_US.utf8/LC_NAME
+b565c000-b565d000 r--p 00000000 08:01 2502455    /usr/lib/locale/en_US.utf8/LC_ADDRESS
+b565d000-b566c000 rw-p 00000000 00:00 0 
+b566c000-b56dd000 rw-p 00000000 00:00 0 
+b56dd000-b5a95000 rwxp 00000000 00:00 0 
+b5a95000-b76dd000 rw-p 00000000 00:00 0 
+b76dd000-b76e0000 ---p 00000000 00:00 0 
+b76e0000-b7730000 rw-p 00000000 00:00 0 
+b7730000-b7731000 r--p 00000000 08:01 2502456    /usr/lib/locale/en_US.utf8/LC_TELEPHONE
+b7731000-b7732000 r--p 00000000 08:01 2498456    /usr/lib/locale/en_US.utf8/LC_MEASUREMENT
+b7732000-b7739000 r--s 00000000 08:01 2505140    /usr/lib/gconv/gconv-modules.cache
+b7739000-b773a000 r--p 00000000 08:01 2502457    /usr/lib/locale/en_US.utf8/LC_IDENTIFICATION
+b773a000-b7742000 rw-s 00000000 08:01 526087     /tmp/hsperfdata_davidefeltoni/20651
+b7742000-b7743000 rw-p 00000000 00:00 0 
+b7743000-b7744000 ---p 00000000 00:00 0 
+b7744000-b7746000 rw-p 00000000 00:00 0 
+bfb39000-bfb4e000 rw-p 00000000 00:00 0          [stack]
+
+VM Arguments:
+jvm_args: -Dfile.encoding=UTF-8 
+java_command: org.rm3umf.framework.importing.StartupImp
+Launcher Type: SUN_STANDARD
+
+Environment Variables:
+PATH=/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin:/usr/games
+USERNAME=davidefeltoni
+LD_LIBRARY_PATH=/usr/lib/jvm/jdk1.7.0_03/jre/lib/i386/client:/usr/lib/jvm/jdk1.7.0_03/jre/lib/i386:
+SHELL=/bin/bash
+DISPLAY=:0.0
+
+Signal Handlers:
+SIGSEGV: [libjvm.so+0x461fb0], sa_mask[0]=0x7ffbfeff, sa_flags=0x10000004
+SIGBUS: [libjvm.so+0x461fb0], sa_mask[0]=0x7ffbfeff, sa_flags=0x10000004
+SIGFPE: [libjvm.so+0x37d3e0], sa_mask[0]=0x7ffbfeff, sa_flags=0x10000004
+SIGPIPE: [libjvm.so+0x37d3e0], sa_mask[0]=0x7ffbfeff, sa_flags=0x10000004
+SIGXFSZ: [libjvm.so+0x37d3e0], sa_mask[0]=0x7ffbfeff, sa_flags=0x10000004
+SIGILL: [libjvm.so+0x37d3e0], sa_mask[0]=0x7ffbfeff, sa_flags=0x10000004
+SIGUSR1: SIG_DFL, sa_mask[0]=0x00000000, sa_flags=0x00000000
+SIGUSR2: [libjvm.so+0x37cce0], sa_mask[0]=0x00000004, sa_flags=0x10000004
+SIGHUP: [libjvm.so+0x37f2b0], sa_mask[0]=0x7ffbfeff, sa_flags=0x10000004
+SIGINT: [libjvm.so+0x37f2b0], sa_mask[0]=0x7ffbfeff, sa_flags=0x10000004
+SIGTERM: [libjvm.so+0x37f2b0], sa_mask[0]=0x7ffbfeff, sa_flags=0x10000004
+SIGQUIT: [libjvm.so+0x37f2b0], sa_mask[0]=0x7ffbfeff, sa_flags=0x10000004
+
+
+---------------  S Y S T E M  ---------------
+
+OS:squeeze/sid
+
+uname:Linux 2.6.32-40-generic #87-Ubuntu SMP Mon Mar 5 20:26:31 UTC 2012 i686
+libc:glibc 2.11.1 NPTL 2.11.1 
+rlimit: STACK 8192k, CORE 0k, NPROC infinity, NOFILE 1024, AS infinity
+load average:1.84 1.79 1.54
+
+/proc/meminfo:
+MemTotal:        3096540 kB
+MemFree:          246144 kB
+Buffers:           36920 kB
+Cached:          2375592 kB
+SwapCached:        42496 kB
+Active:          1330964 kB
+Inactive:        1387568 kB
+Active(anon):      97048 kB
+Inactive(anon):   226976 kB
+Active(file):    1233916 kB
+Inactive(file):  1160592 kB
+Unevictable:           0 kB
+Mlocked:               0 kB
+HighTotal:       2235976 kB
+HighFree:           2756 kB
+LowTotal:         860564 kB
+LowFree:          243388 kB
+SwapTotal:       3930104 kB
+SwapFree:        3669836 kB
+Dirty:             13564 kB
+Writeback:             0 kB
+AnonPages:        289540 kB
+Mapped:            60916 kB
+Shmem:             17952 kB
+Slab:              69924 kB
+SReclaimable:      41880 kB
+SUnreclaim:        28044 kB
+KernelStack:        2432 kB
+PageTables:         7052 kB
+NFS_Unstable:          0 kB
+Bounce:                0 kB
+WritebackTmp:          0 kB
+CommitLimit:     5478372 kB
+Committed_AS:    1594308 kB
+VmallocTotal:     122880 kB
+VmallocUsed:       76408 kB
+VmallocChunk:      38396 kB
+HardwareCorrupted:     0 kB
+HugePages_Total:       0
+HugePages_Free:        0
+HugePages_Rsvd:        0
+HugePages_Surp:        0
+Hugepagesize:       4096 kB
+DirectMap4k:       49144 kB
+DirectMap4M:      860160 kB
+
+
+CPU:total 1 (2 cores per cpu, 1 threads per core) family 6 model 15 stepping 6, cmov, cx8, fxsr, mmx, sse, sse2, sse3, ssse3
+
+/proc/cpuinfo:
+processor	: 0
+vendor_id	: GenuineIntel
+cpu family	: 6
+model		: 15
+model name	: Intel(R) Core(TM)2 CPU          6600  @ 2.40GHz
+stepping	: 6
+cpu MHz		: 2394.000
+cache size	: 4096 KB
+physical id	: 0
+siblings	: 1
+core id		: 0
+cpu cores	: 1
+apicid		: 0
+initial apicid	: 0
+fdiv_bug	: no
+hlt_bug		: no
+f00f_bug	: no
+coma_bug	: no
+fpu		: yes
+fpu_exception	: yes
+cpuid level	: 10
+wp		: yes
+flags		: fpu vme de pse tsc msr pae mce cx8 apic mtrr pge mca cmov pat pse36 clflush dts acpi mmx fxsr sse sse2 ss ht tm pbe nx lm constant_tsc up arch_perfmon pebs bts aperfmperf pni dtes64 monitor ds_cpl vmx est tm2 ssse3 cx16 xtpr pdcm lahf_lm tpr_shadow
+bogomips	: 4799.77
+clflush size	: 64
+cache_alignment	: 64
+address sizes	: 36 bits physical, 48 bits virtual
+power management:
+
+
+
+Memory: 4k page, physical 3096540k(246144k free), swap 3930104k(3669836k free)
+
+vm_info: Java HotSpot(TM) Client VM (22.1-b02) for linux-x86 JRE (1.7.0_03-b04), built on Jan 20 2012 10:11:17 by "java_re" with gcc 4.3.0 20080428 (Red Hat 4.3.0-8)
+
+time: Thu Apr 18 18:53:24 2013
+elapsed time: 7948 seconds
+

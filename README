@@ -1,0 +1,5 @@
+====== README ======
+
+StartupImp: importa utenti, follower etc dal db dataset.rm3 e butta i dati dentro usermodeling
+Main: crea segnali e inizializza tutto per essere pronto per la sperimentazione
+Startup: fa la sperimentazione vera e propria  
